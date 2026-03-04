@@ -1,0 +1,16 @@
+from rfsoc_rfdc.receiver.rx_channel import RxChannel
+
+
+class RxChannelReal2Iq(RxChannel):
+    """
+    A real to iq Rx channel.
+    """
+
+    def __init__(self, dma_ip, fifo_count_ip, target_device, buff_size=1024, debug_mode=False):
+        super().__init__(dma_ip, fifo_count_ip,
+                         target_device, buff_size, debug_mode)
+
+    @property
+    def data(self):
+        # Real samples in even indices and imag samples in odd indices
+        return self.rx_buff[0::2] + 1j * self.rx_buff[1::2]
