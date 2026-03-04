@@ -111,10 +111,10 @@ Real-time 2x2 and 4x4 MIMO streaming is demonstrated with successful EVM and BER
 If you use SPEAR+ in your research, please cite our MILCOM 2025 paper:
 
 ```bibtex
-@inproceedings{SPEAR_plus,
-  author={Cheng, Wei and Gao, Zhihui and Guajardo, Jose and Beshary, Hesham and Niknejad, Ali M. and Chen, Tingjun},
-  booktitle={Proc. IEEE MILCOM'25}, 
-  title={SPEAR+: Streaming-Based Multi-Channel SDR Implementation Using the RFSoC Platform}, 
-  year={2025},
+@inproceedings{SPEAR+,
+  author    = {Cheng, Wei and Gao, Zhihui and Guajardo, Jose and Beshary, Hesham and Niknejad, Ali and Chen, Tingjun},
+  title     = {Streaming-based multi-channel {SDR} implementation using the {RFSoC} platform},
+  booktitle = {IEEE MILCOM},
+  year      = {2025}
 }
 ```
