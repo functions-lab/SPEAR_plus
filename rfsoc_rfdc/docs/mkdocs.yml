@@ -1,0 +1,129 @@
+site_name: rfsoc_rfdc
+site_description: Python library for Xilinx RFSoC RF Data Converter control on PYNQ boards
+site_author: SPEAR+ Team
+site_url: https://functions-lab.github.io/SPEAR_plus/
+repo_url: https://github.com/functions-lab/SPEAR_plus
+repo_name: functions-lab/SPEAR_plus
+edit_uri: edit/master/rfsoc_rfdc/
+
+docs_dir: pages
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          # Try parent dirs so this works both locally (from rfsoc_rfdc/docs/)
+          # and inside Docker (where rfsoc_rfdc/ sits one level above docs/).
+          paths: ["..", "../.."]
+          options:
+            docstring_style: google
+            show_root_heading: true
+            show_root_full_path: true
+            show_source: true
+            show_if_no_docstring: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            members_order: source
+            group_by_category: true
+            show_category_heading: true
+            merge_init_into_class: true
+            inherited_members: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - API Reference:
+    - Overview: api/index.md
+    - Core:
+      - rfdc: api/rfdc.md
+      - rfdc_config: api/rfdc_config.md
+      - rfdc_task: api/rfdc_task.md
+      - rfsoc_overlay: api/rfsoc_overlay.md
+      - overlay_task: api/overlay_task.md
+      - clocks: api/clocks.md
+      - mts: api/mts.md
+      - iq_loader: api/iq_loader.md
+      - waveform_generator: api/waveform_generator.md
+      - dma_monitor: api/dma_monitor.md
+      - multi_ch_mem_layout: api/multi_ch_mem_layout.md
+      - throughput_timer: api/throughput_timer.md
+      - cmac_task: api/cmac_task.md
+    - DSP:
+      - Overview: api/dsp/index.md
+      - ofdm: api/dsp/ofdm.md
+      - detection: api/dsp/detection.md
+      - mimo_detection: api/dsp/mimo_detection.md
+    - Receiver:
+      - Overview: api/receiver/index.md
+      - rx_channel: api/receiver/rx_channel.md
+      - rx_channel_real2iq: api/receiver/rx_channel_real2iq.md
+      - rx_channel_real2real: api/receiver/rx_channel_real2real.md
+      - rx_analyzer: api/receiver/rx_analyzer.md
+      - ofdm_analyer: api/receiver/ofdm_analyer.md
+      - single_ch_rx_task: api/receiver/single_ch_rx_task.md
+      - multi_ch_rx_task: api/receiver/multi_ch_rx_task.md
+      - multi_ch_rx_indept_task: api/receiver/multi_ch_rx_indept_task.md
+      - multi_ch_rx_mimo_task: api/receiver/multi_ch_rx_mimo_task.md
+    - Transmitter:
+      - Overview: api/transmitter/index.md
+      - tx_channel: api/transmitter/tx_channel.md
+      - tx_channel_real2real: api/transmitter/tx_channel_real2real.md
+      - tx_channel_iq2real: api/transmitter/tx_channel_iq2real.md
+      - tx_data_generator: api/transmitter/tx_data_generator.md
+      - single_ch_tx_task: api/transmitter/single_ch_tx_task.md
+      - multi_ch_tx_task: api/transmitter/multi_ch_tx_task.md
+      - multi_ch_tx_indept_task: api/transmitter/multi_ch_tx_indept_task.md
+      - multi_ch_tx_mimo_task: api/transmitter/multi_ch_tx_mimo_task.md
+    - Plotter:
+      - Overview: api/plotter/index.md
+      - plot_format: api/plotter/plot_format.md
+      - signal_plotter: api/plotter/signal_plotter.md
+      - fft_plotter: api/plotter/fft_plotter.md
+      - ber_plot: api/plotter/ber_plot.md
+      - evm_plot: api/plotter/evm_plot.md
