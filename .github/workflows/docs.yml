@@ -1,0 +1,35 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "rfsoc_rfdc/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r rfsoc_rfdc/docs/requirements.txt
+
+      # Rename .y init files so mkdocstrings can resolve sub-packages
+      - name: Fix sub-package __init__ files
+        run: |
+          find rfsoc_rfdc -name "*.y" | while read f; do
+            cp "$f" "${f%.y}.py"
+          done
+
+      - name: Deploy to GitHub Pages
+        working-directory: rfsoc_rfdc/docs
+        run: mkdocs gh-deploy --force --remote-branch gh-pages
